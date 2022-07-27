@@ -1,18 +1,15 @@
 <template>
   <div>
     <!-- 上半区域 -->
-    <div id="settingView" v-show="switchView == 0">
+    <div id="settingView">
       <!--模式相关-->
       <div class="setMode">
         <SetTitle
-          :imgPath="require('assets/icons/viewManager.svg')"
-          :message="$lan.set1[$sw]"
+          :imgPath="require('assets/icons/dataset.svg')"
+          message="Data Selection"
         ></SetTitle>
         <!-- 数据集选择 -->
-        <div
-          class="select"
-          :style="{ width: selectWidth + 'px', marginTop: '8px' }"
-        >
+        <div class="select" :style="{ width: selectWidth + 'px' }">
           <el-select v-model="dataSet" size="small" placeholder="请选择">
             <el-option
               v-for="item in options_dataSet"
@@ -24,51 +21,14 @@
           </el-select>
         </div>
       </div>
-      <!--模式相关-->
-      <div class="setMode">
-        <SetTitle
-          :imgPath="require('assets/icons/viewManager.svg')"
-          :message="$lan.set1[$sw]"
-        ></SetTitle>
-        <div :class="'checkbox-paper'">
-          <el-radio v-model="view_mode" :label="1">{{
-            $lan.set2[$sw]
-          }}</el-radio>
-          <el-radio v-model="view_mode" :label="4">{{
-            $lan.set3[$sw]
-          }}</el-radio>
-          <el-radio v-model="view_mode" :label="3">{{
-            $lan.set4[$sw]
-          }}</el-radio>
-        </div>
-        <!-- 一屏最大频率 -->
-        <div
-          class="select"
-          :style="{ width: selectWidth + 'px', marginTop: '8px' }"
-        >
-          <el-select
-            v-model="freqMaxDis"
-            :disabled="view_mode != 3"
-            size="small"
-            placeholder="请选择"
-          >
-            <el-option
-              v-for="item in options_freqMaxDis"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-            >
-            </el-option>
-          </el-select>
-        </div>
-      </div>
+
       <div class="setMode">
         <SetTitle
           :imgPath="require('assets/icons/colorScale.svg')"
           message="Abstraction Color Scale"
         ></SetTitle>
         <div class="abstraction-color-scale">
-          <p>{{ $lan.set8[$sw] }}:</p>
+          <p>Signal Strength:</p>
           <div style="background-color: #8cd6eb">1</div>
           <div style="background-color: #52c1e2">2</div>
           <div style="background-color: #23a6cd">3</div>
@@ -89,97 +49,36 @@ export default {
     height: {
       type: Number,
     },
-    switchView: {
-      type: Number,
-    },
-    signalSelection: {
-      type: Array,
-    },
     titleHeight: {
       type: Number,
     },
-    tileIdFrontMap: {
-      type: Object
-    },
-
-    smartStep: {
-      type: Object
-    },
-    fixedStep: {
-      type: Object
-    },
-    riverMouseId: {
-      type: String
-    }
   },
   components: {
     SetTitle,
   },
   data () {
     return {
-      /*异常 离群 阈值切换*/
-      autoAbPulse: true,
-      signalStep: undefined,
-      signalBand: undefined,
       inter: 10,
       smallTitleHeight: 25,
-      /* 别删 */
-      view_mode: 1,
-      freqMaxDis: 0,
-      options_freqMaxDis: [
-        {
-          value: 0,
-          label: this.$lan.set5[this.$sw],
-        },
-        {
-          value: 8,
-          label: this.$lan.set6[this.$sw] + "8Mhz",
-        },
-        {
-          value: 15,
-          label: this.$lan.set6[this.$sw] + "15Mhz",
-        },
-        {
-          value: 20,
-          label: this.$lan.set6[this.$sw] + "20Mhz",
-        }
-      ],
+
       dataSet: 0,
       options_dataSet: [
         {
           value: 0,
-          label: "data 1",
+          label: "Dataset 1 (2 hours)",
         },
         {
           value: 1,
-          label: "data 2",
+          label: "Dataset 2 (6 hours)",
         },
       ],
 
       init: true,
-      dbmStdNum: 3,
-      dbmRatioNum: 0,
-      snrStdNum: 3,
-      snrRatioNum: 0,
-      mapInfo: {},
-      freqStdNum: 3,
-      bandStdNum: 3,
-      freqRatioNum: 12,
-      bandRatioNum: 12,
     }
   },
   computed: {
-    extentFreRange () {
-      return [this.$store.state.minFre, this.$store.state.maxFre]
-    },
     selectWidth () {
       return this.width - 40
-    },
-    buttonEnable () {
-      return this.$store.state.selectSignals.length == 0 ? true : false
-    },
-    viewMode () {
-      return this.$store.state.mode
     },
     loading () {
       return this.$store.state.overStop
@@ -198,18 +97,6 @@ export default {
     dataSet (val) {
       this.$store.commit("upDataSet", val)
     },
-    view_mode (val) {
-      this.$store.commit("upMode", val)
-      if (val != 3 && this.freqMaxDis != 0) {
-        this.freqMaxDis = 0
-      }
-      if (val == 3) {
-        this.freqMaxDis = 15
-      }
-    },
-    freqMaxDis (val) {
-      this.$store.commit("upFreqMaxDis", val)
-    },
   },
   methods: {
 
@@ -224,15 +111,13 @@ export default {
 .colorSwitch,
 .select {
   height: 40px;
-  margin: 0px auto;
-  margin-top: 7px;
+  margin: 15px auto;
   line-height: 30px;
 }
-.setMode {
+.setMode:nth-child(1) {
   margin-bottom: 0px;
   padding-top: 10px;
 }
-
 .checkbox {
   margin-left: 18px;
   line-height: 30px;

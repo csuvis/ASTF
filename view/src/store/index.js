@@ -34,7 +34,7 @@ const state = {
   freqMaxDis: 0,
 
   timeStep: 60,
-  freqStep: 1,
+  freqStep: 0.5,
 }
 export default new Vuex.Store({
   state,

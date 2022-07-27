@@ -167,9 +167,7 @@ export default {
       if (d3.event.type != "end") return
       if (d3.event.selection == undefined) return
       let timeRange = d3.event.selection.map(this.scaleTime.invert).reverse()
-      //console.log("timeRange",timeRange)
       this.$store.commit("upExtremeTime", [timeRange[1], timeRange[0]])
-
     })
     this.freBrush.on("brush end", () => {
       if (d3.event.type != "end") return
@@ -208,6 +206,9 @@ export default {
       this.freqData = []
       get_brushInit(this.timeStep, this.freqStep).then(response => {
         this.$store.commit("upDataSet", response.data.dataSet)
+
+        //this.timeBrush
+        //this.freBrush
         //console.log("upDataSet",response.data.dataSet)
         let extentDate = [new Date(response.data.minTime * 1000), new Date(response.data.maxTime * 1000)]
         // console.log(extentDate)
@@ -255,6 +256,19 @@ export default {
         //let l1 = this.timeGroup.selectAll("#brushTimeYAxis text")._groups[0].length-1
         // let l2 = this.timeGroup.selectAll("#brushTimeXAxis text")._groups[0].length-1
         //console.log(this.timeGroup.selectAll("#brushTimeYAxis text")._groups[0])
+        const { freqRange, timeRange } = config.dataInitBrushRange[response.data.dataSet]
+        const timeRangeX = [
+          this.scaleTime(timeRange[0]), this.scaleTime(timeRange[1])
+        ]
+        const freqRangeX = [
+          this.scaleFre(freqRange[0]),
+          this.scaleFre(freqRange[1])
+        ]
+        setTimeout(() => {
+          this.timeBrush.move(this.timeGroup, timeRangeX)
+          this.freBrush.move(this.freGroup, freqRangeX)
+        }, 500)
+
       })
     },
     refresh () {

@@ -15,11 +15,8 @@ import 'normalize.css/normalize.css'
 import 'nprogress/nprogress.css'
 import 'assets/style/styles.scss'
 
-Vue.prototype.$lan = lan
-Vue.prototype.$sw = sw
 Vue.prototype.$viewSW = viewSW
 Vue.prototype.$viewPx = viewPx
-Vue.prototype.$isTu = isTu
 Vue.use(ElementUI)
 
 Vue.config.productionTip = false

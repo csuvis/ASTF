@@ -1,27 +1,5 @@
-/* 0 英语 1 中文 */
-const sw = 0
-const lan = {
-    /* 视图标题 */
-    'view1': ['Statistical View', 'Statistical View'],
-    'view2': ['Abstraction View', 'Abstraction View'],
-    'view3': ['River View', 'River View'],
-    'view4': ['Time-frequency View', 'Time-frequency View'],
-    'view5': ['Setting', 'Setting'],
-    'view6': ['Map', 'Map'],
-    'view7': ['Signal List', 'Signal List'],
-    /* 右侧设置 从上到下 */
-    'set1': ['Signal Distribution Resettings', '信号分布模式'],
-    'set2': ['Smart distribution', '智能分布模式'],
-    'set3': ['Equidistant distribution', '等距分布模式'],
-    'set4': ['Original distribution', '原始分布模式'],
-    'set5': ['Display all signals', '单屏显示全部信号'],
-    'set6': ['Frequency axis resolution', '频率轴分辨率'],
-    'set8': ['Signal Strength', 'Signal Strength'],
 
-}
-const isTu = false
-let viewSW = 1  //实验所用
-viewSW = isTu ? 4 : viewSW
+let viewSW = 1
 // 宽度 高度 左侧宽度 标题高度 左侧刷子高度
 const viewPx = [
     [1270, 717, 1020, 30, 130],//1280*720

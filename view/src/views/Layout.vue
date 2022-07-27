@@ -17,13 +17,7 @@
           <MainPage
             :width="leftWidth"
             :height="leftHeight"
-            :lightItem="lightItem"
-            :stopItem="stopItem"
             :titleHeight="titleHeight"
-            :colorSwitch="colorSwitch"
-            @upTileIdFrontMap="upTileIdFrontMap"
-            @overRiverSignalId="overRiverSignalId"
-            @leaveRiverSignalId="leaveRiverSignalId"
           >
           </MainPage>
         </div>
@@ -45,11 +39,7 @@
               lineHeight: titleHeight + 'px',
             }"
           >
-            <a
-              href="###"
-              style="text-decoration: none; color: #f7fafb"
-              @click="switchSetMap(0)"
-            >
+            <a href="###" style="text-decoration: none; color: #f7fafb">
               <img
                 id="controllerImg"
                 src="~assets/icons/controller.svg"
@@ -57,20 +47,13 @@
                 :width="titleHeight - 6 + 'px'"
                 :height="titleHeight - 10 + 'px'"
               />
-              <span>{{ $lan.view5[$sw] }}</span>
+              <span>Setting</span>
             </a>
           </div>
           <Setting
             :width="rightWidth"
             :height="leftHeight"
-            :switchView="switchView"
-            @HightLight="HightLight"
-            @stopLight="stopLight"
             :titleHeight="titleHeight"
-            :tileIdFrontMap="tileIdFrontMap"
-            :smartStep="smartStep"
-            :fixedStep="fixedStep"
-            :riverMouseId="riverMouseId"
           ></Setting>
         </div>
       </div>
@@ -91,17 +74,6 @@ export default {
       leftWidth: this.$viewPx[this.$viewSW][2],
       marin_middle: config.viewInter,
       titleHeight: this.$viewPx[this.$viewSW][3],
-      lightItem: {},
-      stopItem: {},
-      colorSwitch: 0,
-      switchView: 0,
-      tileIdFrontMap: {},
-
-      //智能
-      smartStep: {},
-      fixedStep: {},
-      //river
-      riverMouseId: '',
     }
   },
   computed: {
@@ -130,30 +102,6 @@ export default {
   },
   created () { },
   methods: {
-    overRiverSignalId (id) {
-      this.riverMouseId = id
-    },
-    leaveRiverSignalId (id) {
-      this.riverMouseId = id
-    },
-    /*
-    setImportSignal(temp) {
-      this.importSignal = temp
-    },
-    */
-    upTileIdFrontMap (temp) {
-      this.tileIdFrontMap = temp
-    },
-    switchSetMap (temp) {
-      this.switchView = temp
-    },
-
-    HightLight (temp) {
-      this.lightItem = temp
-    },
-    stopLight (temp) {
-      this.stopItem = temp
-    },
   }
 };
 </script>
