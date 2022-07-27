@@ -1,0 +1,12 @@
+{
+    "Signal_MaxFre":438.054,
+    "Signal_MaxFre_band":0.166707,
+    "Signal_MinFre":0.0,
+    "Signal_MinFre_band":0.0,
+    "Signal_startTime":1527991200.0,
+    "Signal_endTime":1527998459.0,
+    "Signal_MaxDbm":0.0,
+    "Signal_MinDbm":-91.0,
+    "Signal_MaxSnr":54.333,
+    "Signal_MinSnr":0.0
+}
