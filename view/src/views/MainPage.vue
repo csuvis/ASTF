@@ -30,7 +30,7 @@
             :width="titleHeight - 6 + 'px'"
             :height="titleHeight - 10 + 'px'"
           />
-          <span>Abstract Signal Time-Frequency View</span>
+          <span>Abstract Signal Time-Frequency Diagram</span>
         </div>
         <ASTF
           :width="width"
