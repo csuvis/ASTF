@@ -74,7 +74,7 @@ export default {
       inter: config.viewInter, //每个视图之间的留白
       brushViewHeight: this.$viewPx[this.$viewSW][4],
       xScale: d3.scaleLinear(),
-      margin: { left: 52, right: 35, top: 25, bottom: 20 },
+      margin: { left: 52, right: 35, top: 25, bottom: 40 },
       upLoading: false,
     }
   },

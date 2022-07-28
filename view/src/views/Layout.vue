@@ -1,6 +1,6 @@
 <template>
   <!-- 1920 * 850 -->
-  <div v-loading="loading" element-loading-text="后端切换数据集中,请稍等...">
+  <div v-loading="loading" element-loading-text="loading...">
     <div>
       <!-- 全局提示框 -->
       <div id="tooltip"></div>
@@ -39,16 +39,14 @@
               lineHeight: titleHeight + 'px',
             }"
           >
-            <a href="###" style="text-decoration: none; color: #f7fafb">
-              <img
-                id="controllerImg"
-                src="~assets/icons/controller.svg"
-                alt=""
-                :width="titleHeight - 6 + 'px'"
-                :height="titleHeight - 10 + 'px'"
-              />
-              <span>Setting</span>
-            </a>
+            <img
+              id="controllerImg"
+              src="~assets/icons/controller.svg"
+              alt=""
+              :width="titleHeight - 6 + 'px'"
+              :height="titleHeight - 10 + 'px'"
+            />
+            <span>Setting</span>
           </div>
           <Setting
             :width="rightWidth"

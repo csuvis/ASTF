@@ -57,7 +57,6 @@
 </template>
 
 <script>
-import $ from 'jquery'
 import { format } from 'utils/base'
 import { get_brushInit, upDataSet } from 'utils/dataRequest'
 import config from 'api/config'
@@ -180,27 +179,6 @@ export default {
     this.upData()
   },
   methods: {
-    openLXB (event) {
-      let menu = $("#webmenu")
-      menu.css({
-        "top": event.clientY,
-        "left": event.clientX,
-        "height": '25px'
-      })
-      this.webmenuEnable = true
-    },
-    enterWeb () {
-      this.webmenuEnable = false
-      if ((this.$store.state.maxtime == 0 && this.$store.state.minTime == 0)
-        || (this.$store.state.maxFre == 0 && this.$store.state.minFre == 0)) {
-        this.$message("尚未刷选,请刷选时频")
-        return
-      }
-      window.open('http://127.0.0.1:4888', 'target', '')
-    },
-    closeMenu () {
-      this.webmenuEnable = false
-    },
     upData () {
       this.timeData = []
       this.freqData = []

@@ -137,7 +137,7 @@
           :width="margin.left + 5 + 'px'"
           :height="height + 'px'"
         >
-          <g :transform="`translate(${margin.left},${margin.top})`">
+          <g :transform="`translate(${margin.left},${0})`">
             <text
               x="-8"
               :y="height - 40"
